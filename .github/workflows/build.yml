@@ -10,7 +10,7 @@ on:
 
 jobs:
   sonar:
-    runs-on: windows-latest  # Windows 환경 필요
+    runs-on: windows-latest  
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,7 +18,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '6.0.x'  # 필요하면 7.0.x로 변경
+          dotnet-version: '6.0.x'  
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
@@ -28,7 +28,7 @@ jobs:
 
       - name: SonarScanner Begin
         run: |
-          SonarScanner.MSBuild.exe begin /k:"YourProjectKey" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          SonarScanner.MSBuild.exe begin /k:"kbkim24_LostCryptSample" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
         shell: cmd
 
       - name: Build Solution
