@@ -1,3 +1,17 @@
+Analyze a project with a GitHub Action
+Create a GitHub Secret
+In your GitHub repository, go to Settings > Secrets > Actions and create a new secret with the following details:
+
+In the Name field, enter 
+SONAR_TOKEN
+ 
+In the Value field, enter 
+abc1234
+
+
+
+
+
 name: SonarQube Analysis
 
 on:
@@ -24,7 +38,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1
 
       - name: Restore NuGet packages
-        run: nuget restore YourSolution.sln
+        run: nuget restore LostCryptSample.sln
 
       - name: SonarScanner Begin
         run: |
@@ -39,4 +53,3 @@ jobs:
         run: |
           SonarScanner.MSBuild.exe end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
         shell: cmd
-
